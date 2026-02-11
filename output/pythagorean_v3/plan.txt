@@ -1,0 +1,116 @@
+TITLE: The Pythagorean Theorem: From Geometry to Distance
+
+ACT 1: Hook - Distance Without Measuring (~8s)
+- Mobjects: Grid (NumberPlane), two points, stair path (horizontal + vertical segments), diagonal line
+- Animations:
+  - Grid fades in with two points appearing
+  - Stair path draws step by step (horizontal then vertical segments)
+  - Diagonal line fades in with a slight glow (Indicate)
+  - Text "Shortest path?" fades in near the diagonal
+- Voice-over cue: "How do we find the shortest distance between two points without measuring directly?"
+
+ACT 2: Right Triangle Emerges (~8s)
+- Mobjects: Right triangle (replacing stair path), right angle marker, labels 'a', 'b', 'c'
+- Animations:
+  - Stair path transforms into clean right triangle sides
+  - Right angle marker appears at the corner (precisely aligned)
+  - Sides highlight one by one with labels fading in (color-matched)
+- Voice-over cue: "This problem leads us to a right triangle, with legs 'a' and 'b', and hypotenuse 'c'."
+
+ACT 3: Build Squares on Each Side (~10s)
+- Mobjects: Three squares on triangle sides (color-matched to sides)
+- Animations:
+  - Square on 'a' grows outward (precise vertex calculation, not rotation)
+  - Square on 'b' grows outward similarly
+  - Square on 'c' grows outward, completing the set
+  - Text "Area = side²" fades in near one square
+- Voice-over cue: "Let's build squares on each side to shift our focus from length to area."
+
+ACT 4: Area Intuition Before Formula (~10s)
+- Mobjects: Unit grids inside squares on 'a' and 'b', partial grid on 'c'
+- Animations:
+  - Unit grids fade into squares on 'a' and 'b'
+  - Tiles count up briefly in 'a' and 'b' (using Integer for animation)
+  - Partial grid fades into 'c' square but stops (no counting yet)
+- Voice-over cue: "Squaring a side means finding the area of its square, built from unit tiles."
+
+ACT 5: Statement of the Theorem (First Reveal) (~8s)
+- Mobjects: Equation text "a² + b² = c²"
+- Animations:
+  - Equation appears term by term near diagram
+  - Each square glows (Indicate) as its term appears
+  - Pause after full equation for emphasis
+- Voice-over cue: "This leads to the Pythagorean Theorem: a squared plus b squared equals c squared."
+
+ACT 6: Rearrangement Proof Setup (Big Square Method) (~12s)
+- Mobjects: Large square (side a+b), four identical right triangles, central tilted square (side c)
+- Animations:
+  - Large square draws first
+  - Four triangles slide and rotate into position around center
+  - Central square becomes visible as a distinct shape
+- Voice-over cue: "To prove this, let's arrange four copies of our triangle inside a larger square."
+
+ACT 7: Area Method 1 - Outer Square Minus Triangles (~12s)
+- Mobjects: Text for area expression "(a + b)² - 4(ab/2)"
+- Animations:
+  - Large square fills to show total area
+  - Four triangles flash and dim to indicate subtraction
+  - Area expression appears step by step
+- Voice-over cue: "The area of the big square minus the four triangles gives us one way to compute the remaining space."
+
+ACT 8: Area Method 2 - Inner Square Directly (~8s)
+- Mobjects: Text for area expression "c²"
+- Animations:
+  - Everything dims except central square
+  - Central square glows to highlight
+  - Text "Area = c²" fades in near it
+- Voice-over cue: "Alternatively, that same central space is simply the square of the hypotenuse, c squared."
+
+ACT 9: Equate and Simplify (~14s)
+- Mobjects: Algebraic steps as text
+- Animations:
+  - Both area expressions appear side by side
+  - Morph into single equation, showing expansion of (a + b)²
+  - Stepwise cancellation and rearrangement to a² + b² = c²
+- Voice-over cue: "Equating these areas and simplifying, we confirm the theorem through algebra matching our geometry."
+
+ACT 10: Numeric Example (~10s)
+- Mobjects: New triangle (a=3, b=4, c=5), squares with area labels (9, 16, 25)
+- Animations:
+  - New triangle fades in with specific side lengths
+  - Squares build with area numbers counting up
+  - Hypotenuse label resolves to '5' as area fills to 25
+- Voice-over cue: "For a triangle with legs 3 and 4, the hypotenuse square is 25, so its length is 5."
+
+ACT 11: Coordinate Geometry Link (~12s)
+- Mobjects: Coordinate plane, dynamic triangle from (0,0) to (x,y), distance formula
+- Animations:
+  - Triangle placed on axes, legs aligned
+  - Point moves, triangle updates dynamically (using ValueTracker)
+  - Formula morphs from a² + b² = c² to distance = √(x² + y²)
+- Voice-over cue: "This theorem also gives us the distance between any two points on a plane."
+
+ACT 12: Continuous Deformation Insight (~10s)
+- Mobjects: Dynamic triangle with updating squares
+- Animations:
+  - Vertex dragged along line, triangle morphs (ValueTracker)
+  - Squares update live, maintaining area relationship
+- Voice-over cue: "No matter how the right triangle changes shape, the area relationship always holds."
+
+ACT 13: 3D Teaser Extension (~10s)
+- Mobjects: 3D box outline, face diagonal, space diagonal, 3D formula
+- Animations:
+  - Triangle lifts into 3D box edges
+  - Face diagonal appears, then space diagonal
+  - Formula a² + b² + d² = diagonal² fades in
+- Voice-over cue: "In three dimensions, the theorem extends to find space diagonals using a similar pattern."
+
+ACT 14: Summary Frame (~8s)
+- Mobjects: Clean right triangle with squares, final equation
+- Animations:
+  - Slow zoom in on triangle and squares
+  - Subtle glow cycle on squares (Indicate)
+  - Final equation centered below
+- Voice-over cue: "The Pythagorean Theorem connects geometry, area, and distance—a fundamental truth."
+
+TOTAL: ~120s (2 minutes)

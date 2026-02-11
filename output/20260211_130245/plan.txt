@@ -1,0 +1,58 @@
+TITLE: Understanding the Area Under the Curve
+
+ACT 1: Introduction to Graphs (~7s)
+- Goal: Introduce the concept of a graph and a curve as a visual representation of a function.
+- Mobjects: Axes (GREY_A, centered), label_x (WHITE, below axes), label_y (WHITE, left of axes)
+- Animations: 
+  - ShowCreation(axes) 2s
+  - Write(label_x as "x") 1s
+  - Write(label_y as "y") 1s
+  - self.wait(3s) for narrator to explain axes as a coordinate system
+- Cleanup: keep all for next act
+
+ACT 2: Plotting a Simple Curve (~8s)
+- Goal: Show a basic curve on the graph to set the stage for area calculation.
+- Mobjects: Curve (BLUE, plotted on axes as a simple parabola y = x^2 from x=-2 to x=2)
+- Animations:
+  - ShowCreation(curve) 3s
+  - self.wait(5s) for narrator to describe the curve as a function
+- Cleanup: keep all for next act
+
+ACT 3: What is "Area Under the Curve"? (~9s)
+- Goal: Visually introduce the concept of the area under the curve as the space between the curve and the x-axis.
+- Mobjects: ShadedRegion (GREEN, area under curve from x=-1 to x=1, opacity 0.3), Label (WHITE, "Area", positioned below shaded region)
+- Animations:
+  - FadeIn(shaded_region) 2s
+  - Write(label) 2s
+  - self.wait(5s) for narrator to explain the area as the space under the curve
+- Cleanup: keep all for next act
+
+ACT 4: Intuition with Rectangles (~10s)
+- Goal: Build intuition by approximating the area using rectangles (a simple Riemann sum concept).
+- Mobjects: Rectangles (YELLOW, 6 narrow rectangles under curve from x=-1 to x=1, heights based on left endpoints)
+- Animations:
+  - LaggedStartMap(ShowCreation, rectangles) 3s
+  - self.wait(7s) for narrator to explain how rectangles approximate the area
+- Cleanup: FadeOut(rectangles) to simplify for next act, keep axes, curve, shaded_region, labels
+
+ACT 5: Refining the Approximation (~9s)
+- Goal: Show how more, thinner rectangles improve the approximation of the area.
+- Mobjects: FineRectangles (YELLOW, 12 thinner rectangles under curve from x=-1 to x=1)
+- Animations:
+  - LaggedStartMap(ShowCreation, fine_rectangles) 3s
+  - self.wait(6s) for narrator to explain that more rectangles mean a better estimate
+- Cleanup: FadeOut(fine_rectangles), keep axes, curve, shaded_region, labels
+
+ACT 6: The True Area Concept (~8s)
+- Goal: Transition from approximation to the idea of the exact area as rectangles become infinitely thin (intuition for integration).
+- Mobjects: Text (WHITE, "Exact Area = Limit of Rectangles", positioned above curve)
+- Animations:
+  - Write(text) 3s
+  - self.wait(5s) for narrator to explain the concept of exact area via limits
+- Cleanup: FadeOut(text), keep axes, curve, shaded_region, labels for closing
+
+CLOSING: (~5s)
+- Final message: "Area Under the Curve: The Foundation of Integration"
+- Cleanup: FadeOut all remaining objects (axes, curve, shaded_region, labels)
+
+TOTAL: ~56s

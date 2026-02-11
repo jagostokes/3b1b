@@ -1,0 +1,43 @@
+TITLE: Understanding the Area Under the Curve
+
+ACT 1: Introduction to Graphs (~7s)
+- Goal: Introduce the concept of a graph and a curve as a visual representation of a function.
+- Mobjects: Axes (GREY_A, centered), graph of a simple curve like y=x^2 (BLUE, from x=-2 to x=2), label "y=x²" (BLUE, positioned above the curve at x=0)
+- Animations: ShowCreation(axes) 1.5s, ShowCreation(graph) 1.5s, Write(label) 1.5s, self.wait(2.5s)
+- Cleanup: keep all for next act
+
+ACT 2: What is "Area Under the Curve"? (~7s)
+- Goal: Explain that the area under the curve represents the space between the curve and the x-axis over a specific interval.
+- Mobjects: Shaded region (GREEN, under the curve from x=0 to x=1), label "Area" (GREEN, positioned below the shaded region)
+- Animations: DrawBorderThenFill(shaded_region) 2.0s, Write(label) 1.5s, self.wait(3.5s)
+- Cleanup: keep all for next act
+
+ACT 3: Intuition with Rectangles (~8s)
+- Goal: Build intuition by approximating the area using rectangles (a basic form of numerical integration).
+- Mobjects: 5 vertical rectangles (YELLOW, under the curve from x=0 to x=1, equal width, heights touching the curve at left endpoints), label "Approximation" (YELLOW, positioned near the rectangles)
+- Animations: LaggedStartMap(ShowCreation, rectangles) 2.5s, Write(label) 1.5s, self.wait(4.0s)
+- Cleanup: FadeOut(rectangles), FadeOut(label "Approximation")
+
+ACT 4: Refining the Approximation (~7s)
+- Goal: Show that more, thinner rectangles give a better approximation of the true area.
+- Mobjects: 10 thinner vertical rectangles (YELLOW, under the curve from x=0 to x=1, equal width, heights touching the curve at left endpoints), label "Better Approximation" (YELLOW, positioned near the rectangles)
+- Animations: LaggedStartMap(ShowCreation, rectangles) 2.0s, Write(label) 1.5s, self.wait(3.5s)
+- Cleanup: FadeOut(rectangles), FadeOut(label "Better Approximation")
+
+ACT 5: The Concept of Integration (~8s)
+- Goal: Introduce the idea of integration as the limit of infinitely many rectangles to find the exact area.
+- Mobjects: Text "Integration = Exact Area" (RED, positioned at top center), many thin rectangles (YELLOW, fading to suggest infinity, under the curve from x=0 to x=1)
+- Animations: Write(text) 2.0s, LaggedStartMap(ShowCreation, thin_rectangles) 2.0s, self.wait(4.0s)
+- Cleanup: FadeOut(thin_rectangles), FadeOut(text)
+
+ACT 6: Real-World Meaning (~7s)
+- Goal: Connect the area under the curve to real-world interpretations like distance traveled or total accumulation.
+- Mobjects: Text "Area = Total Quantity" (GREEN, top center), subtext "e.g., Distance if y=Speed" (GREEN, below main text)
+- Animations: Write(text) 1.5s, Write(subtext) 1.5s, self.wait(4.0s)
+- Cleanup: FadeOut(text), FadeOut(subtext)
+
+CLOSING: (~5s)
+- Final message: "Area Under the Curve: From Approximation to Integration"
+- Cleanup: fade everything out (axes, graph, shaded region, labels)
+
+TOTAL: ~49s

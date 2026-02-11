@@ -1,0 +1,43 @@
+TITLE: How Neural Networks Work for Regression
+
+ACT 1: Introduction to Regression (~7s)
+- Goal: Define regression as predicting a continuous output from inputs
+- Mobjects: Text("Regression: Predicting a number from inputs", color=WHITE, position=UP*2), example_text("e.g., predict house price from size", color=WHITE, position=UP*1)
+- Animations: Write(regression_text) 2s, self.wait(1.5s), Write(example_text) 2s, self.wait(1.5s)
+- Cleanup: FadeOut(regression_text), FadeOut(example_text)
+
+ACT 2: Input and Output Representation (~8s)
+- Goal: Show how data is represented as input-output pairs
+- Mobjects: Dot(input_dot, color=BLUE, position=LEFT*4), Dot(output_dot, color=GREEN, position=RIGHT*4), Arrow(input_to_output, color=WHITE, from=input_dot to=output_dot), Text("Input (e.g., size)", color=BLUE, position=LEFT*4+DOWN*1), Text("Output (price)", color=GREEN, position=RIGHT*4+DOWN*1)
+- Animations: FadeIn(input_dot) 1s, FadeIn(output_dot) 1s, GrowArrow(input_to_output) 1.5s, Write(input_label) 1.5s, Write(output_label) 1.5s, self.wait(1.5s)
+- Cleanup: keep all for next act
+
+ACT 3: Neural Network Structure (~9s)
+- Goal: Introduce a simple neural network with layers (input, hidden, output)
+- Mobjects: VGroup(hidden_dots, 3 Dots, color=YELLOW, arranged in column at ORIGIN), Lines(input_to_hidden, color=WHITE, from input_dot to each hidden_dot), Lines(hidden_to_output, color=WHITE, from each hidden_dot to output_dot), Text("Hidden Layer", color=YELLOW, position=UP*2)
+- Animations: FadeIn(hidden_dots) 2s, ShowCreation(input_to_hidden) 1.5s, ShowCreation(hidden_to_output) 1.5s, Write(hidden_label) 2s, self.wait(2s)
+- Cleanup: keep all for next act
+
+ACT 4: Weights and Connections (~8s)
+- Goal: Explain that connections have weights to adjust the influence of inputs
+- Mobjects: Text("Weights adjust influence", color=WHITE, position=DOWN*2), Brace(weight_brace, color=RED, around one input_to_hidden line), Text("w1", color=RED, next to weight_brace)
+- Animations: Write(weights_text) 2s, FadeIn(weight_brace) 1.5s, FadeIn(weight_label) 1.5s, self.wait(3s)
+- Cleanup: FadeOut(weights_text), FadeOut(weight_brace), FadeOut(weight_label)
+
+ACT 5: Activation and Prediction (~8s)
+- Goal: Show how data flows through the network to make a prediction
+- Mobjects: FlashAround(input_dot, color=BLUE), FlashAround(hidden_dots, color=YELLOW), FlashAround(output_dot, color=GREEN), Text("Prediction!", color=GREEN, position=RIGHT*4+UP*1)
+- Animations: FlashAround(input_dot) 1s, FlashAround(hidden_dots) 1.5s, FlashAround(output_dot) 1.5s, Write(prediction_text) 2s, self.wait(2s)
+- Cleanup: keep all for next act
+
+ACT 6: Learning Through Error (~8s)
+- Goal: Introduce the concept of learning by minimizing prediction error
+- Mobjects: Text("Error = Actual - Predicted", color=WHITE, position=DOWN*2), Arrow(error_arrow, color=RED, from output_dot pointing down), Text("Adjust weights to minimize error", color=WHITE, position=DOWN*3)
+- Animations: Write(error_text) 2s, GrowArrow(error_arrow) 1.5s, Write(adjust_text) 2s, self.wait(2.5s)
+- Cleanup: FadeOut(error_text), FadeOut(error_arrow), FadeOut(adjust_text)
+
+CLOSING: (~5s)
+- Final message: Text("Neural Networks learn to predict by adjusting weights!", color=WHITE, position=UP*2)
+- Cleanup: fade everything out
+
+TOTAL: ~53s

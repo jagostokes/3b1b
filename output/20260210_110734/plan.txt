@@ -1,0 +1,48 @@
+TITLE: Linear Transformations as Geometric Operators
+
+ACT 1: Introduction & Unit Square (~10s)
+- Mobjects: Title, unit square, basis vectors (i, j) with labels
+- Animations: Fade in title, shrink to top; draw unit square and basis vectors with labels; brief pause for explanation
+- Voice-over cue: "Linear transformations are geometric operators that reshape space. Let’s start with a unit square and its basis vectors to see how they move under different matrices."
+
+ACT 2: Scaling Transformation (~15s)
+- Mobjects: Grid (NumberPlane), scaled square and vectors, matrix label for scaling
+- Animations: Introduce grid; apply scaling matrix (e.g., [[2, 0], [0, 0.5]]) to square and vectors; animate grid deformation; show matrix label; pause for explanation
+- Voice-over cue: "First, scaling stretches or compresses space. Here, a matrix doubles the width and halves the height, transforming the unit square and the entire grid."
+
+ACT 3: Rotation Transformation (~15s)
+- Mobjects: Rotated square and vectors, matrix label for rotation
+- Animations: Reset to original square; apply rotation matrix (e.g., 45 degrees); animate grid rotation; show matrix label; pause
+- Voice-over cue: "Next, rotation turns space around the origin. A 45-degree rotation matrix moves every point, including our square, in a circular path."
+
+ACT 4: Shear Transformation (~15s)
+- Mobjects: Sheared square and vectors, matrix label for shear
+- Animations: Reset to original; apply shear matrix (e.g., [[1, 1], [0, 1]]); animate grid shear; show matrix label; pause
+- Voice-over cue: "Shear transformations slide space along one axis. This matrix shears horizontally, tilting the square and distorting the grid."
+
+ACT 5: Reflection Transformation (~15s)
+- Mobjects: Reflected square and vectors, matrix label for reflection
+- Animations: Reset to original; apply reflection matrix (e.g., over y-axis [[-1, 0], [0, 1]]); animate grid reflection; show matrix label; pause
+- Voice-over cue: "Reflection flips space over a line. Reflecting over the y-axis with this matrix mirrors the square and the grid."
+
+ACT 6: Matrix Composition (~15s)
+- Mobjects: Labels for two matrices and their product, transformed square
+- Animations: Show two matrices (e.g., scaling then rotation); animate square through first transformation, then second; show product matrix; pause
+- Voice-over cue: "Matrix multiplication composes transformations. Applying scaling then rotation is equivalent to a single matrix, their product, transforming space in one step."
+
+ACT 7: Determinant as Area Scaling (~10s)
+- Mobjects: Area label, determinant value
+- Animations: Show original square area (1); transform under scaling matrix; show new area and determinant value; pause
+- Voice-over cue: "The determinant of a matrix measures how area scales. For this scaling matrix, the determinant is the area of the transformed square relative to the original."
+
+ACT 8: Eigenvectors as Invariant Directions (~15s)
+- Mobjects: Eigenvector lines, labels
+- Animations: Apply scaling matrix again; highlight eigenvectors (along axes for simplicity) that only scale, not rotate; show labels; pause
+- Voice-over cue: "Eigenvectors are special directions that remain unchanged in direction under a transformation, only scaling. Here, the axes are eigenvectors for this scaling matrix."
+
+CLOSING (~5s)
+- Mobjects: Summary text
+- Animations: Fade out all objects; fade in summary text "Linear transformations reshape space via matrices, with composition, area scaling, and invariant directions"; hold, then fade out
+- Voice-over cue: "Linear transformations, through matrices, offer a powerful way to reshape space, combining effects, scaling areas, and preserving key directions."
+
+TOTAL: ~95s

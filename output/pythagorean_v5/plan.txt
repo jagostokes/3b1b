@@ -1,0 +1,32 @@
+TITLE: Pythagorean Theorem
+
+ACT 1: Introduction & Triangle Setup (~10s)
+- Mobjects: Title text, right triangle with vertices A, B, C, sides labeled a, b, c, right angle marker
+- Animations: 
+  - Fade in title, wait, shrink to top
+  - Show creation of triangle sides one by one
+  - Fade in side labels (a, b, c) with colors
+  - Show right angle marker with emphasis
+- Voice-over cue: "The Pythagorean Theorem applies to right triangles. Here, we have a triangle with sides labeled a, b, and c, where c is the hypotenuse."
+
+ACT 2: Squares on Sides (~15s)
+- Mobjects: Squares on sides a, b, c with corresponding colors, area labels (a², b², c²)
+- Animations:
+  - Build square on side b (base), fade in label b²
+  - Build square on side c (vertical), fade in label c²
+  - Build square on side a (hypotenuse), fade in label a²
+- Voice-over cue: "We construct squares on each side. The area of each square represents the square of the side length: b squared, c squared, and a squared."
+
+ACT 3: Visual Proof & Equation (~15s)
+- Mobjects: Equation text "a² + b² = c²"
+- Animations:
+  - Highlight squares on sides b and c together to suggest their combined area
+  - Highlight square on side a to show it equals the sum
+  - Fade in the equation at the bottom as a summary
+- Voice-over cue: "The Pythagorean Theorem states that the sum of the areas of the squares on the two shorter sides, a squared plus b squared, equals the area of the square on the hypotenuse, c squared."
+
+CLOSING (~5s)
+- Fade out all elements except equation, hold for impact, then fade out completely
+- Voice-over cue: "This fundamental relationship is the basis for many geometric proofs and applications."
+
+TOTAL: ~45s

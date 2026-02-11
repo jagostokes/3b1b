@@ -1,0 +1,48 @@
+TITLE: Linear Transformations as Geometric Operators
+
+ACT 1: Introduction to Linear Transformations (~10s)
+- Mobjects: Title text, unit square, basis vectors (i, j as arrows)
+- Animations: 
+  - Fade in title.
+  - Draw unit square and basis vectors.
+  - Title moves to top edge.
+
+ACT 2: Basis Vector Transformations (~15s)
+- Mobjects: 2x2 matrix text (scaling example), transformed basis vectors, transformed square
+- Animations:
+  - Introduce a scaling matrix (e.g., [[2, 0], [0, 1]]).
+  - Animate basis vectors stretching (i to 2i, j unchanged).
+  - Show unit square deforming to rectangle based on new basis.
+
+ACT 3: Grid Deformation for Different Transformations (~20s)
+- Mobjects: NumberPlane (grid), text labels for each transformation
+- Animations:
+  - Show grid background.
+  - Animate scaling: grid stretches horizontally.
+  - Transition to rotation (e.g., 90 degrees): grid rotates.
+  - Transition to shear (e.g., [[1, 1], [0, 1]]): grid slants.
+  - Transition to reflection (e.g., over y-axis): grid flips.
+
+ACT 4: Matrix Multiplication as Composition (~15s)
+- Mobjects: Two matrix texts, combined transformation label
+- Animations:
+  - Show two matrices (e.g., rotation then shear).
+  - Animate grid undergoing first transformation, then second.
+  - Label as composition of transformations.
+
+ACT 5: Determinant as Area Scaling (~10s)
+- Mobjects: Unit square, transformed square, area labels
+- Animations:
+  - Show unit square with area=1.
+  - Apply transformation (e.g., scaling by 2 and 1).
+  - Show new area (e.g., 2) and link to determinant.
+
+ACT 6: Eigenvectors as Invariant Directions (~15s)
+- Mobjects: Eigenvector arrows, transformation matrix text
+- Animations:
+  - Show a transformation (e.g., scaling).
+  - Highlight vectors that only scale, not rotate (eigenvectors).
+  - Animate transformation to show invariance of direction.
+
+CLOSING (~5s)
+- Fade out all elements with a final text "Linear Transformations".

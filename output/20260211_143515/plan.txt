@@ -1,0 +1,38 @@
+TITLE: Understanding the Area Under a Curve - Introduction to Integrals
+
+ACT 1: Introduction to the Problem (~7s)
+- Goal: Pose the question of finding the area under a curve
+- Mobjects: Text "What is the area under this curve?" (WHITE, top center), Axes (GREY_A, center), graph of a simple quadratic function y = x² (BLUE, plotted on axes from x=-2 to x=2)
+- Animations: Write(text) 2s, self.wait(1.5s), ShowCreation(axes) 1.5s, ShowCreation(graph) 2s
+- Cleanup: FadeOut(text), keep axes and graph for next act
+
+ACT 2: Dividing into Rectangles (~8s)
+- Goal: Show how to approximate area using rectangles
+- Mobjects: Axes and graph (from previous act), 6 vertical rectangles approximating the area under the curve (YELLOW, from x=-2 to x=2, width=0.66 units each, height based on left endpoint)
+- Animations: DrawBorderThenFill(rectangles, lag_ratio=0.5) 4s, self.wait(1.5s), Indicate(rectangles, color=RED) 2.5s
+- Cleanup: FadeOut(rectangles), keep axes and graph for next act
+
+ACT 3: Refining the Approximation (~8s)
+- Goal: Demonstrate that more rectangles give a better approximation
+- Mobjects: Axes and graph (from previous act), 12 thinner rectangles (YELLOW, from x=-2 to x=2, width=0.33 units each, height based on left endpoint)
+- Animations: DrawBorderThenFill(rectangles, lag_ratio=0.3) 4s, self.wait(1.5s), Indicate(rectangles, color=RED) 2.5s
+- Cleanup: FadeOut(rectangles), keep axes and graph for next act
+
+ACT 4: Concept of Limit (~7s)
+- Goal: Introduce the idea of infinitely many rectangles as a limit
+- Mobjects: Axes and graph (from previous act), Text "As rectangles → ∞, approximation → exact area" (WHITE, top center), 24 very thin rectangles (YELLOW, from x=-2 to x=2, width=0.166 units each)
+- Animations: Write(text) 2s, self.wait(1.5s), DrawBorderThenFill(rectangles, lag_ratio=0.2) 3.5s
+- Cleanup: FadeOut(rectangles), FadeOut(text), keep axes and graph for next act
+
+ACT 5: Introducing the Integral (~8s)
+- Goal: Connect the area concept to the integral symbol
+- Mobjects: Axes and graph (from previous act), Text "This area is the Integral" (WHITE, top center), Text "∫ f(x) dx" (WHITE, below the previous text)
+- Animations: Write(first_text) 2s, self.wait(1.5s), Write(integral_text) 2s, self.wait(2.5s)
+- Cleanup: FadeOut(first_text), FadeOut(integral_text), keep axes and graph for closing
+
+CLOSING: (~5s)
+- Final message: Text "The Integral = Area Under the Curve" (WHITE, center)
+- Animations: Write(text) 2s, self.wait(3s)
+- Cleanup: FadeOut everything (text, axes, graph)
+
+TOTAL: ~43s

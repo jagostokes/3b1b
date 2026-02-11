@@ -1,0 +1,37 @@
+TITLE: Understanding the Chain Rule
+
+ACT 1: Introduction to Composition (~7s)
+- Goal: Introduce the concept of function composition as the basis for the chain rule
+- Mobjects: Text "f(g(x))" (BLUE, center), Text "g(x)" (YELLOW, below center), Text "f( )" (GREEN, above center)
+- Animations: Write("f(g(x))") 2s, self.wait(1.5s), Write("g(x)") 1.5s, Write("f( )") 1.5s
+- Cleanup: FadeOut all text
+
+ACT 2: Visualizing Nested Functions (~8s)
+- Goal: Show a visual representation of nested functions with a graph
+- Mobjects: Axes (GREY_A, center), graph_g (YELLOW, plotted on axes as a curve), graph_f_g (GREEN, plotted on axes as a transformed curve), label_g "g(x)" (YELLOW, right of graph_g), label_f_g "f(g(x))" (GREEN, right of graph_f_g)
+- Animations: ShowCreation(axes) 1.5s, ShowCreation(graph_g) 1.5s, Write(label_g) 1s, self.wait(1.5s), ShowCreation(graph_f_g) 1.5s, Write(label_f_g) 1s
+- Cleanup: FadeOut all labels, keep axes and graphs for next act
+
+ACT 3: Rate of Change for g(x) (~7s)
+- Goal: Illustrate the derivative of the inner function g(x)
+- Mobjects: Dot_g (YELLOW, on graph_g at x=1), Tangent_g (YELLOW, tangent to graph_g at Dot_g), label_dg "dg/dx" (YELLOW, near Tangent_g)
+- Animations: FadeIn(Dot_g) 1s, ShowCreation(Tangent_g) 1.5s, Write(label_dg) 1.5s, self.wait(2s)
+- Cleanup: FadeOut(label_dg), keep Dot_g and Tangent_g for next act
+
+ACT 4: Rate of Change for f(g(x)) (~7s)
+- Goal: Show the derivative of the outer function f at g(x)
+- Mobjects: Dot_f_g (GREEN, on graph_f_g at corresponding g(1)), Tangent_f_g (GREEN, tangent to graph_f_g at Dot_f_g), label_df "df/dg" (GREEN, near Tangent_f_g)
+- Animations: FadeIn(Dot_f_g) 1s, ShowCreation(Tangent_f_g) 1.5s, Write(label_df) 1.5s, self.wait(2s)
+- Cleanup: FadeOut(label_df), keep all dots and tangents for next act
+
+ACT 5: Combining Rates of Change (~8s)
+- Goal: Demonstrate how the chain rule multiplies the rates of change
+- Mobjects: Text "df/dx = df/dg * dg/dx" (BLUE, top center), Arrow_mult (RED, pointing between tangents to emphasize multiplication)
+- Animations: Write("df/dx = df/dg * dg/dx") 2s, self.wait(2s), ShowCreation(Arrow_mult) 1.5s, Indicate(Arrow_mult) 1.5s, self.wait(1s)
+- Cleanup: FadeOut(Arrow_mult), keep text and graphs for closing
+
+CLOSING: (~5s)
+- Final message: "Chain Rule: Derivative of composition is the product of derivatives"
+- Cleanup: FadeOut everything
+
+TOTAL: ~42s

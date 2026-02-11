@@ -1,0 +1,137 @@
+VIDEO META
+- Topic: Neural Network Basics
+- Total duration: ~40s
+- Color scheme: primary=BLUE, highlight=YELLOW, result=GREEN, accent=RED
+
+GLOBAL PERSISTENT ELEMENTS
+- Title — Text — top band (x=0, y=3.2) — WHITE — scenes 1 through 5
+
+SCENE 1: Introduction to Neural Networks (~8s)
+
+Objects:
+- Title — Text "Neural Networks" — top band (x=0, y=3.2) — font_size=48 — WHITE — PERSISTENT
+- IntroText — Text "A model inspired by the brain" — center (x=0, y=0) — font_size=36 — WHITE — EPHEMERAL
+
+Actions (ordered, with timing):
+1. [0.0-1.5s] FadeIn Title — shift=UP*0.3, run_time=1.5
+2. [1.5-3.0s] FadeIn IntroText — shift=UP*0.3, run_time=1.5
+3. [3.0-5.0s] wait 2.0s — narrator: "Neural networks are computational models inspired by the human brain."
+4. [5.0-8.0s] wait 3.0s — narrator: "They process inputs to produce outputs through layers of connected nodes."
+
+Layout snapshot (what's on screen mid-scene):
+- Title band: Title "Neural Networks"
+- Center: IntroText "A model inspired by the brain"
+- Right/Left: empty
+- (No conflicts, regions occupied: top band, center)
+
+Exit state:
+- KEEP: Title
+- REMOVE: IntroText
+- TRANSFORM: None
+
+SCENE 2: Input Layer (~7s)
+
+Objects:
+- InputDots — VGroup of 3 Dots — center, positioned at (-2, 1), (-2, 0), (-2, -1) — radius=0.2 — BLUE — EPHEMERAL
+- InputLabel — Text "Input Layer" — left zone (x=-4, y=0) — font_size=32 — WHITE — EPHEMERAL
+
+Actions (ordered, with timing):
+1. [0.0-1.5s] FadeIn InputDots — shift=LEFT*0.3, run_time=1.5
+2. [1.5-2.5s] FadeIn InputLabel — shift=LEFT*0.3, run_time=1.0
+3. [2.5-4.5s] wait 2.0s — narrator: "Data starts at the input layer, represented as nodes."
+4. [4.5-7.0s] wait 2.5s — narrator: "Each node holds a piece of information, like a pixel value or feature."
+
+Layout snapshot (what's on screen mid-scene):
+- Title band: Title "Neural Networks"
+- Center: InputDots (3 dots at left of center)
+- Left: InputLabel "Input Layer"
+- Right: empty
+- (No conflicts, regions occupied: top band, left, center)
+
+Exit state:
+- KEEP: Title, InputDots, InputLabel
+- REMOVE: None
+- TRANSFORM: None
+
+SCENE 3: Hidden Layer and Connections (~8s)
+
+Objects:
+- HiddenDots — VGroup of 4 Dots — center, positioned at (0, 1.5), (0, 0.5), (0, -0.5), (0, -1.5) — radius=0.2 — BLUE — EPHEMERAL
+- HiddenLabel — Text "Hidden Layer" — left zone (x=-4, y=0) — font_size=32 — WHITE — EPHEMERAL
+- Connections1 — VGroup of Lines — connecting each InputDot to each HiddenDot (12 lines total) — stroke_width=1 — GREY_A — EPHEMERAL
+
+Actions (ordered, with timing):
+1. [0.0-1.5s] FadeIn HiddenDots — shift=RIGHT*0.3, run_time=1.5
+2. [1.5-2.5s] FadeTransform InputLabel → HiddenLabel — run_time=1.0
+3. [2.5-4.0s] ShowCreation Connections1 — run_time=1.5
+4. [4.0-6.0s] wait 2.0s — narrator: "Inputs connect to a hidden layer, where processing happens."
+5. [6.0-8.0s] wait 2.0s — narrator: "Each connection has a weight, adjusting the signal strength."
+
+Layout snapshot (what's on screen mid-scene):
+- Title band: Title "Neural Networks"
+- Center: InputDots (left), HiddenDots (middle), Connections1 (between them)
+- Left: HiddenLabel "Hidden Layer"
+- Right: empty
+- (No conflicts, regions occupied: top band, left, center)
+
+Exit state:
+- KEEP: Title, InputDots, HiddenDots, Connections1, HiddenLabel
+- REMOVE: None
+- TRANSFORM: None
+
+SCENE 4: Output Layer and Connections (~8s)
+
+Objects:
+- OutputDots — VGroup of 2 Dots — center, positioned at (2, 0.5), (2, -0.5) — radius=0.2 — GREEN — EPHEMERAL
+- OutputLabel — Text "Output Layer" — right zone (x=4, y=0) — font_size=32 — WHITE — EPHEMERAL
+- Connections2 — VGroup of Lines — connecting each HiddenDot to each OutputDot (8 lines total) — stroke_width=1 — GREY_A — EPHEMERAL
+
+Actions (ordered, with timing):
+1. [0.0-1.5s] FadeIn OutputDots — shift=RIGHT*0.3, run_time=1.5
+2. [1.5-2.5s] FadeIn OutputLabel — shift=RIGHT*0.3, run_time=1.0
+3. [2.5-4.0s] ShowCreation Connections2 — run_time=1.5
+4. [4.0-6.0s] wait 2.0s — narrator: "Hidden layers connect to the output layer, giving results."
+5. [6.0-8.0s] wait 2.0s — narrator: "Outputs might represent predictions, like a category or value."
+
+Layout snapshot (what's on screen mid-scene):
+- Title band: Title "Neural Networks"
+- Center: InputDots (left), HiddenDots (middle), OutputDots (right), Connections1 (input-hidden), Connections2 (hidden-output)
+- Left: HiddenLabel "Hidden Layer"
+- Right: OutputLabel "Output Layer"
+- (No conflicts, regions occupied: top band, left, center, right)
+
+Exit state:
+- KEEP: Title, InputDots, HiddenDots, OutputDots, Connections1, Connections2, HiddenLabel, OutputLabel
+- REMOVE: None
+- TRANSFORM: None
+
+SCENE 5: Highlighting Flow (~7s)
+
+Objects:
+- FlowArrow1 — Arrow — from InputDots center (-2, 0) to HiddenDots center (0, 0) — color=YELLOW — EPHEMERAL
+- FlowArrow2 — Arrow — from HiddenDots center (0, 0) to OutputDots center (2, 0) — color=YELLOW — EPHEMERAL
+
+Actions (ordered, with timing):
+1. [0.0-1.5s] GrowArrow FlowArrow1 — run_time=1.5
+2. [1.5-3.0s] GrowArrow FlowArrow2 — run_time=1.5
+3. [3.0-5.0s] wait 2.0s — narrator: "Data flows from input to output through the network."
+4. [5.0-7.0s] wait 2.0s — narrator: "Learning adjusts weights to improve predictions."
+
+Layout snapshot (what's on screen mid-scene):
+- Title band: Title "Neural Networks"
+- Center: InputDots, HiddenDots, OutputDots, Connections1, Connections2, FlowArrow1, FlowArrow2
+- Left: HiddenLabel "Hidden Layer"
+- Right: OutputLabel "Output Layer"
+- (No conflicts, regions occupied: top band, left, center, right)
+
+Exit state:
+- KEEP: Title
+- REMOVE: InputDots, HiddenDots, OutputDots, Connections1, Connections2, HiddenLabel, OutputLabel, FlowArrow1, FlowArrow2
+- TRANSFORM: None
+
+CLOSING: (~2s)
+- Remove all remaining objects
+- Summary: "Neural Networks: Mimicking the Brain" — center, font_size=44
+- Hold 2.0s, fade out
+
+TOTAL: ~40s

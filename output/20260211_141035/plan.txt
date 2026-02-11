@@ -1,0 +1,139 @@
+VIDEO META
+- Topic: Explaining Derivatives
+- Total duration: ~40s
+- Color scheme: primary=BLUE, highlight=YELLOW, result=GREEN, accent=RED
+
+GLOBAL PERSISTENT ELEMENTS
+- Title — Text — position=(0, 3.5) — WHITE — scenes 1 through 5
+
+SCENE 1: Title Introduction (~4s)
+
+Objects:
+- Title — Text("Understanding Derivatives") — position=(0, 3.5) — font_size=48 — WHITE — PERSISTENT
+
+Actions (ordered, with timing):
+1. [0.0-1.5s] FadeIn Title — shift=DOWN*0.3, run_time=1.5
+2. [1.5-3.0s] wait 1.5s — narrator: "Let's explore the concept of derivatives."
+3. [3.0-4.0s] Transform Title — scale=0.7, target_position=(0, 3.5), run_time=1.0
+
+Layout snapshot (what's on screen mid-scene):
+- Title band: Title("Understanding Derivatives")
+- Center: empty
+- Right/Left: empty
+- (No conflicts, only title in top band)
+
+Exit state:
+- KEEP: Title
+- REMOVE: None
+- TRANSFORM: None
+
+SCENE 2: Visual Definition - Slope of a Curve (~8s)
+
+Objects:
+- Axes — Axes — center, shifted 0.5 DOWN — width=10, height=6 — WHITE — PERSISTENT
+- Graph — Line (f(x)=x²) — center, x_range=(-3, 3.3) — stroke_width=3 — BLUE — PERSISTENT
+- GraphLabel — Text("f(x) = x²") — at graph endpoint (2.8, f(2.8)) offset UR buff=0.15 — font_size=30 — BLUE — PERSISTENT
+
+Actions (ordered, with timing):
+1. [0.0-1.5s] ShowCreation Axes — run_time=1.5
+2. [1.5-3.5s] ShowCreation Graph — run_time=2.0
+3. [3.5-4.5s] FadeIn GraphLabel — shift=RIGHT*0.2, run_time=1.0
+4. [4.5-6.5s] wait 2.0s — narrator: "A derivative represents the slope of a curve at any point."
+5. [6.5-8.0s] wait 1.5s — narrator: "Here, we have a simple parabola, f(x) equals x squared."
+
+Layout snapshot (what's on screen mid-scene):
+- Title band: Title("Understanding Derivatives")
+- Center: Axes, Graph
+- Right/Left: GraphLabel (right zone)
+- (No conflicts, regions occupied distinctly)
+
+Exit state:
+- KEEP: Title, Axes, Graph, GraphLabel
+- REMOVE: None
+- TRANSFORM: None
+
+SCENE 3: Geometric Intuition - Secant to Tangent (~9s)
+
+Objects:
+- Point1 — Dot — position=(-1, f(-1)) — radius=0.1 — YELLOW — EPHEMERAL
+- Point2 — Dot — position=(1, f(1)) — radius=0.1 — YELLOW — EPHEMERAL
+- Secant — Line — from Point1 to Point2 — stroke_width=2 — RED — TRANSITIONAL
+- Point3 — Dot — position=(0, f(0)) — radius=0.1 — YELLOW — PERSISTENT
+- Tangent — Line — tangent at x=0 on Graph, length=2.0 — stroke_width=2 — GREEN — PERSISTENT
+
+Actions (ordered, with timing):
+1. [0.0-1.0s] FadeIn Point1, Point2 — run_time=1.0
+2. [1.0-2.5s] ShowCreation Secant — run_time=1.5
+3. [2.5-4.5s] wait 2.0s — narrator: "The slope between two points on the curve is a secant line."
+4. [4.5-5.5s] FadeIn Point3 — run_time=1.0
+5. [5.5-7.0s] Transform Secant → Tangent (as Point2 moves to Point3 conceptually) — run_time=1.5
+6. [7.0-9.0s] wait 2.0s — narrator: "As the points get closer, the secant becomes the tangent, representing the derivative at that point."
+
+Layout snapshot (what's on screen mid-scene):
+- Title band: Title("Understanding Derivatives")
+- Center: Axes, Graph, Point1, Point2, Secant (later Tangent, Point3)
+- Right/Left: GraphLabel (right zone)
+- (No conflicts, points and lines on graph, label offset)
+
+Exit state:
+- KEEP: Title, Axes, Graph, GraphLabel, Point3, Tangent
+- REMOVE: Point1, Point2
+- TRANSFORM: Secant → Tangent
+
+SCENE 4: Symbolic Form - Derivative Notation (~8s)
+
+Objects:
+- Equation — Text("f'(x) = 2x") — position=(-4, 2.0) — font_size=36 — GREEN — PERSISTENT
+- LabelTangent — Text("slope = 2x") — next to Tangent, offset UP buff=0.4 — font_size=24 — GREEN — PERSISTENT
+
+Actions (ordered, with timing):
+1. [0.0-1.5s] FadeIn Equation — shift=UP*0.3, run_time=1.5
+2. [1.5-3.5s] wait 2.0s — narrator: "The derivative of f(x) = x squared is f prime of x equals 2x."
+3. [3.5-4.5s] FadeIn LabelTangent — shift=UP*0.2, run_time=1.0
+4. [4.5-6.5s] wait 2.0s — narrator: "At any point x, the slope of the tangent is 2x."
+5. [6.5-8.0s] Indicate Equation — color=YELLOW, run_time=1.5
+
+Layout snapshot (what's on screen mid-scene):
+- Title band: Title("Understanding Derivatives")
+- Center: Axes, Graph, Point3, Tangent
+- Left: Equation
+- Right: GraphLabel, LabelTangent (staggered vertically)
+- (No conflicts, text in left/right zones, graph in center)
+
+Exit state:
+- KEEP: Title, Axes, Graph, GraphLabel, Point3, Tangent, Equation, LabelTangent
+- REMOVE: None
+- TRANSFORM: None
+
+SCENE 5: Connect Visual to Symbolic - Slope at a Point (~7s)
+
+Objects:
+- ValueLabel — Text("x = 1, slope = 2") — position=(-4, 1.0) — font_size=28 — GREEN — EPHEMERAL
+- NewPoint — Dot — position=(1, f(1)) — radius=0.1 — YELLOW — EPHEMERAL
+- NewTangent — Line — tangent at x=1 on Graph, length=2.0 — stroke_width=2 — GREEN — EPHEMERAL
+
+Actions (ordered, with timing):
+1. [0.0-1.0s] FadeIn ValueLabel — shift=UP*0.2, run_time=1.0
+2. [1.0-2.0s] FadeIn NewPoint — run_time=1.0
+3. [2.0-3.5s] ShowCreation NewTangent — run_time=1.5
+4. [3.5-5.5s] wait 2.0s — narrator: "For example, at x equals 1, the slope is 2."
+5. [5.5-7.0s] Indicate NewTangent — color=YELLOW, run_time=1.5
+
+Layout snapshot (what's on screen mid-scene):
+- Title band: Title("Understanding Derivatives")
+- Center: Axes, Graph, Point3, Tangent, NewPoint, NewTangent
+- Left: Equation, ValueLabel (staggered vertically)
+- Right: GraphLabel, LabelTangent (staggered vertically)
+- (No conflicts, text staggered, visuals distinct on graph)
+
+Exit state:
+- KEEP: Title, Axes, Graph, GraphLabel, Point3, Tangent, Equation, LabelTangent
+- REMOVE: ValueLabel, NewPoint, NewTangent
+- TRANSFORM: None
+
+CLOSING: (~4s)
+- Remove all remaining objects via FadeOut (Title, Axes, Graph, GraphLabel, Point3, Tangent, Equation, LabelTangent)
+- Summary: "Derivatives: Slope of the Curve" — center, font_size=44
+- Hold 2.0s, fade out
+
+TOTAL: ~40s

@@ -1,0 +1,84 @@
+---
+TITLE: Linear Transformations as Geometric Operators
+
+ACT 1: Introduction to Linear Transformations (~20s)
+- Mobjects: Text("Linear Transformations as Space Movers"), UnitSquare, VectorI (arrow for i-hat), VectorJ (arrow for j-hat), Text("Basis Vectors")
+- Animations:
+  1. FadeIn Text("Linear Transformations as Space Movers") at top.
+  2. ShowCreation UnitSquare centered at origin.
+  3. ShowCreation VectorI from origin to (1,0) with label Text("i").
+  4. ShowCreation VectorJ from origin to (0,1) with label Text("j").
+  5. FadeIn Text("Basis Vectors") below square.
+- Notes: Keep labels simple and clear. Ensure vectors are colored distinctly (e.g., red for i, blue for j).
+
+ACT 2: Transforming the Unit Square (~30s)
+- Mobjects: UnitSquare (existing), VectorI (existing), VectorJ (existing), Text("Scaling"), Text("Rotation"), Text("Shear"), Text("Reflection")
+- Animations:
+  1. FadeOut Text("Linear Transformations as Space Movers") and Text("Basis Vectors").
+  2. FadeIn Text("Scaling") at top.
+  3. Apply scaling matrix (e.g., 2x in x, 0.5x in y) to UnitSquare, VectorI, VectorJ over 2 seconds.
+  4. FadeOut Text("Scaling"), FadeIn Text("Rotation").
+  5. Apply rotation matrix (e.g., 45 degrees) to UnitSquare, VectorI, VectorJ over 2 seconds.
+  6. FadeOut Text("Rotation"), FadeIn Text("Shear").
+  7. Apply shear matrix (e.g., shear x by y) to UnitSquare, VectorI, VectorJ over 2 seconds.
+  8. FadeOut Text("Shear"), FadeIn Text("Reflection").
+  9. Apply reflection matrix (e.g., over y-axis) to UnitSquare, VectorI, VectorJ over 2 seconds.
+- Notes: Reset to original state between transformations for clarity, but don’t animate the reset (instantaneous). Use distinct colors for each transformation type if possible.
+
+ACT 3: Grid Deformation (~25s)
+- Mobjects: Grid (array of lines forming a 5x5 grid), Text("Grid Deformation")
+- Animations:
+  1. FadeOut UnitSquare, VectorI, VectorJ, Text("Reflection").
+  2. FadeIn Text("Grid Deformation") at top.
+  3. ShowCreation Grid centered at origin.
+  4. Apply scaling matrix to Grid over 2 seconds.
+  5. Reset Grid, then apply rotation matrix over 2 seconds.
+  6. Reset Grid, then apply shear matrix over 2 seconds.
+  7. Reset Grid, then apply reflection matrix over 2 seconds.
+- Notes: Grid should be light gray to avoid visual clutter. Transformations should match those in Act 2 for consistency.
+
+ACT 4: Points Following Basis Vectors (~20s)
+- Mobjects: Grid (existing), DotP (single point), VectorI (reintroduced), VectorJ (reintroduced), Text("Points Follow Basis")
+- Animations:
+  1. FadeOut Text("Grid Deformation").
+  2. FadeIn Text("Points Follow Basis") at top.
+  3. ShowCreation DotP at a random position on Grid (e.g., (1.5, 0.5)).
+  4. ShowCreation VectorI and VectorJ again at origin.
+  5. Apply a transformation (e.g., rotation) to Grid, VectorI, VectorJ, and DotP simultaneously over 2 seconds.
+  6. Highlight DotP’s movement as a linear combination of VectorI and VectorJ with dashed lines or fading arrows if possible.
+- Notes: Ensure DotP is brightly colored (e.g., yellow) to stand out. Highlighting movement can be subtle to avoid overcomplicating the scene.
+
+ACT 5: Matrix Multiplication as Composition (~25s)
+- Mobjects: Grid (existing), Text("Composition of Transformations"), Text("Matrix A"), Text("Matrix B"), Text("A then B")
+- Animations:
+  1. FadeOut Text("Points Follow Basis"), DotP, VectorI, VectorJ.
+  2. FadeIn Text("Composition of Transformations") at top.
+  3. FadeIn Text("Matrix A") below.
+  4. Apply first transformation (e.g., scaling) to Grid over 2 seconds.
+  5. FadeOut Text("Matrix A"), FadeIn Text("Matrix B").
+  6. Apply second transformation (e.g., rotation) to Grid over 2 seconds.
+  7. FadeOut Text("Matrix B"), FadeIn Text("A then B").
+  8. Reset Grid, then apply combined transformation (scaling then rotation) over 2 seconds.
+- Notes: Use text to label each step clearly. Combined transformation should visually match the sequential application.
+
+ACT 6: Determinants and Area Scaling (~20s)
+- Mobjects: UnitSquare (reintroduced), Text("Determinant = Area Scaling"), Text("Area Before"), Text("Area After")
+- Animations:
+  1. FadeOut Grid, Text("Composition of Transformations"), Text("A then B").
+  2. FadeIn Text("Determinant = Area Scaling") at top.
+  3. ShowCreation UnitSquare at origin.
+  4. FadeIn Text("Area Before") with value (e.g., "1 unit²") next to UnitSquare.
+  5. Apply transformation (e.g., scaling by 2x in x, 1x in y) to UnitSquare over 2 seconds.
+  6. FadeOut Text("Area Before"), FadeIn Text("Area After") with value (e.g., "2 units²").
+- Notes: Use a simple transformation where determinant is easy to interpret as area change. Text should include Unicode "²" for square units.
+
+CLOSING (~10s)
+- Mobjects: UnitSquare (existing), VectorEig (arrow for eigenvector), Text("Eigenvectors: Invariant Directions")
+- Animations:
+  1. FadeOut Text("Determinant = Area Scaling"), Text("Area After").
+  2. FadeIn Text("Eigenvectors: Invariant Directions") at top.
+  3. ShowCreation VectorEig along a direction that remains scaled but not rotated under the transformation (e.g., along x-axis for scaling).
+  4. Apply transformation to UnitSquare and VectorEig, showing VectorEig only scales without changing direction over 2 seconds.
+  5. FadeOut all elements slowly.
+- Notes: Keep eigenvector concept simple—focus on visual invariance. Use a distinct color for VectorEig (e.g., green).
+---

@@ -1,0 +1,30 @@
+TITLE: Understanding the Pythagorean Theorem
+
+ACT 1: Introducing the Right Triangle (~8s)
+- Goal: Present a right triangle and label its sides
+- Mobjects: Right triangle, side labels "a", "b", "c" (with consistent colors: a-blue, b-green, c-red), right angle marker
+- Key actions: Draw the right triangle, highlight the right angle with a marker, label the sides with colored text
+- Transitions: Focus on the labeled triangle, fade in side "a" label to start
+
+ACT 2: Square on Side 'a' (~10s)
+- Goal: Illustrate the area of side 'a' as a square
+- Mobjects: Square on side 'a' (blue outline), label "a²"
+- Key actions: Construct a square outward from side 'a' using the same blue color, label it "a²" to represent area
+- Transitions: Brief pause to emphasize the square, then shift focus to side 'b'
+
+ACT 3: Squares on Sides 'b' and 'c' (~10s)
+- Goal: Extend the concept to sides 'b' and 'c'
+- Mobjects: Squares on side 'b' (green outline) and side 'c' (red outline), labels "b²" and "c²"
+- Key actions: Build square on side 'b' with green color, label "b²", then build square on side 'c' with red color, label "c²"
+- Transitions: Show all three squares together on the triangle
+
+ACT 4: Demonstrating the Theorem (~10s)
+- Goal: Visually connect the areas to reveal the Pythagorean relationship
+- Mobjects: Equation "a² + b² = c²" with matching colors (blue, green, red)
+- Key actions: Highlight squares 'a²' and 'b²' together, then point to square 'c²', reveal the equation below the triangle
+- Transitions: Hold on the final frame with equation and squares visible
+
+CLOSING: (~7s)
+- Final message: "Pythagorean Theorem: a² + b² = c²"
+
+TOTAL: ~45s
