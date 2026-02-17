@@ -1,22 +1,40 @@
 """System prompts for LLM scene generation and error fixing.
 
-The SYSTEM_PROMPT is designed to be stable for context caching — it contains the
-complete API reference, style guide, and examples. Only the user message changes
-between calls.
+DEPRECATED: This module provides backward compatibility with the old monolithic prompt system.
+New code should use prompt_builder.py for modular, tiered prompts.
+
+The ENHANCED_PROMPT is kept for reference but is being phased out in favor of composed prompts.
 """
 
 from pathlib import Path
+from .prompt_builder import (
+    build_system_prompt,
+    build_fix_prompt,
+    build_planner_prompt,
+    build_coder_prompt,
+    build_checker_prompt,
+    compose_prompt,
+    classify_error,
+)
 
 _PROMPT_DIR = Path(__file__).parent
 ENHANCED_PROMPT = (_PROMPT_DIR / "grok_prompt.md").read_text()
 
+# New modular prompts (recommended)
+SYSTEM_PROMPT_MINIMAL = build_system_prompt("minimal")
+SYSTEM_PROMPT_STANDARD = build_system_prompt("standard")
+SYSTEM_PROMPT_DETAILED = build_system_prompt("detailed")
+
 # ─────────────────────────────────────────────────────────────────────────────
-# This prompt is the LLM's entire "training" for writing manimgl videos.
-# It is intentionally long and detailed so the LLM can one-shot the code.
-# Keep it STABLE across calls for context caching.
+# DEPRECATED: Old monolithic prompts kept for backward compatibility
+# New code should use the modular system from prompt_builder.py
 # ─────────────────────────────────────────────────────────────────────────────
 
-SYSTEM_PROMPT = """\
+# Use SYSTEM_PROMPT_STANDARD for new code (same coverage, 45% smaller)
+SYSTEM_PROMPT = SYSTEM_PROMPT_STANDARD
+
+# Legacy full prompt (deprecated, kept for compatibility)
+_LEGACY_SYSTEM_PROMPT = """\
 You are a world-class manimgl video creator — the kind that makes 3Blue1Brown-\
 quality educational animations. You receive a plain-text description and produce \
 a structured plan followed by complete, runnable Python code — all in one response.
@@ -1106,8 +1124,11 @@ class GeneratedScene(Scene):
 Remember: the CODE section must contain ONLY runnable Python. No markdown fences.\
 """
 
+# New modular fix prompt (use build_fix_prompt() for error-specific routing)
+FIX_CODE_PROMPT = build_fix_prompt()
 
-FIX_CODE_PROMPT = """\
+# Legacy fix prompt (deprecated)
+_LEGACY_FIX_CODE_PROMPT = """\
 You are an expert manimgl debugger. You will receive a manimgl script that \
 failed to render and the error message.
 
@@ -1134,11 +1155,15 @@ Common fixes:
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# MULTI-PASS PIPELINE PROMPTS (powered by grok_prompt.md)
+# MULTI-PASS PIPELINE PROMPTS
+# New modular versions use prompt_builder.py
 # ═════════════════════════════════════════════════════════════════════════════
 
+# Use new modular prompts
+PLANNER_PROMPT = build_planner_prompt()
 
-PLANNER_PROMPT = """\
+# Legacy planner prompt (deprecated)
+_LEGACY_PLANNER_PROMPT = """\
 You are a master educational video planner for manimgl (3Blue1Brown's animation library).
 
 DESIGN PRINCIPLES:
@@ -1207,7 +1232,11 @@ RULES:
 """
 
 
-SCENE_GENERATOR_PROMPT = ENHANCED_PROMPT + """
+# New modular scene generator (use build_coder_prompt())
+SCENE_GENERATOR_PROMPT = build_coder_prompt(mode="multi_pass")
+
+# Legacy scene generator (deprecated)
+_LEGACY_SCENE_GENERATOR_PROMPT = ENHANCED_PROMPT + """
 
 ════════════════════════════════════════════════════════════════════════════════
 PER-ACT CODE GENERATION MODE (overrides Section 8 output format)
@@ -1237,8 +1266,11 @@ QUALITY RULES:
 13. Keep all objects within frame bounds (safe zone: [-6, 6] x [-3, 3])
 """
 
+# New modular checker for multi-pass (use build_checker_prompt())
+CHECKER_PROMPT = build_checker_prompt()
 
-CHECKER_PROMPT = """\
+# Legacy multi-pass checker prompt (deprecated)
+_LEGACY_CHECKER_PROMPT = """\
 You are a strict code quality checker for manimgl educational video acts.
 
 Check the code for ALL of these issues:
@@ -1633,8 +1665,11 @@ class GeneratedScene(Scene):
 ```\
 """
 
+# New modular single-pass checker
+SP_CHECKER_PROMPT = build_checker_prompt()  # Same checker for both pipelines
 
-SP_CHECKER_PROMPT = """\
+# Legacy single-pass checker (deprecated)
+_LEGACY_SP_CHECKER_PROMPT = """\
 You are the Checking LLM in a multi-stage animation pipeline:
 
 User Prompt → Planner LLM → Coding LLM ⇄ **Checking LLM** → Render

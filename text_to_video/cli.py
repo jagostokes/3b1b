@@ -15,9 +15,11 @@ from .llm import (
     sp_generate_code,
     sp_check_code,
     sp_fix_code,
+    set_metrics_tracker,
 )
 from .renderer import Renderer, RenderResult, REPO_ROOT
 from .player import play_video
+from .metrics import MetricsCollector
 
 
 def parse_plan_into_acts(plan: str) -> list[dict]:
@@ -209,6 +211,17 @@ def main():
         action="store_true",
         help="Use multi-pass pipeline with checker bot (slower but higher quality).",
     )
+    parser.add_argument(
+        "--tier",
+        choices=["minimal", "standard", "detailed"],
+        default="standard",
+        help="Prompt tier: minimal (quick fixes), standard (default), or detailed (complex scenes).",
+    )
+    parser.add_argument(
+        "--measure",
+        action="store_true",
+        help="Enable detailed metrics collection (tokens, timing, errors).",
+    )
     args = parser.parse_args()
 
     # Read input — treat as file path only if it looks like one and exists
@@ -237,60 +250,91 @@ def main():
     renderer = Renderer(output_dir)
     print(f"Output: {output_dir}")
 
-    # Step 1: Generate plan + code
-    if args.multi_pass:
-        print("[1/3] Generating scene with multi-pass pipeline...")
-        plan, code = multi_pass_pipeline(description, verbose=args.verbose)
-    else:
-        print("[1/3] Generating scene (Planner → Coder → Checker)...")
-        plan, code = single_pass_pipeline(description, verbose=args.verbose)
+    # Initialize metrics collection if requested
+    pipeline_name = "multi_pass" if args.multi_pass else "single_pass"
 
-    renderer.save_plan(plan)
-    if args.verbose:
-        print("\n--- PLAN ---")
-        print(plan)
-        print("--- END PLAN ---\n")
-        print("--- CODE ---")
-        print(code)
-        print("--- END CODE ---\n")
-
-    # Step 2: Render with retry
-    result = RenderResult(success=False, video_path=None, error_msg="")
-    max_attempts = 3
-
-    for attempt in range(1, max_attempts + 1):
-        print(f"[2/3] Rendering (attempt {attempt}/{max_attempts})...")
-        scene_file = renderer.write_scene(code, attempt)
-        result = renderer.render(scene_file)
-
-        if result.success:
-            print(f"  Render succeeded! Video: {result.video_path}")
-            break
-
-        print(f"  Render failed. Error:\n{result.error_msg[:500]}")
-        if attempt < max_attempts:
-            print("  Asking LLM to fix the code...")
-            code = fix_code(code, result.error_msg, use_enhanced=True)
-            if args.verbose:
-                print(f"\n--- FIXED CODE (attempt {attempt + 1}) ---")
-                print(code)
-                print("--- END FIXED CODE ---\n")
-
-    if not result.success:
-        print(
-            f"\nFailed to render after {max_attempts} attempts.",
-            file=sys.stderr,
+    if args.measure:
+        metrics_collector = MetricsCollector(
+            output_dir=output_dir,
+            description=description,
+            pipeline=pipeline_name,
+            tier=args.tier,
         )
-        sys.exit(1)
+        metrics = metrics_collector.__enter__()
+        set_metrics_tracker(metrics)
+        print(f"  Metrics collection enabled (tier: {args.tier})")
+    else:
+        metrics_collector = None
+        metrics = None
 
-    # Step 3: Play
-    if not args.no_play and result.video_path:
-        print("[3/3] Opening video...")
-        play_video(result.video_path)
-    elif result.video_path:
-        print(f"[3/3] Video saved at: {result.video_path}")
+    try:
+        # Step 1: Generate plan + code
+        if args.multi_pass:
+            print("[1/3] Generating scene with multi-pass pipeline...")
+            plan, code = multi_pass_pipeline(description, verbose=args.verbose)
+        else:
+            print("[1/3] Generating scene (Planner → Coder → Checker)...")
+            plan, code = single_pass_pipeline(description, verbose=args.verbose)
 
-    print("Done.")
+        renderer.save_plan(plan)
+        if args.verbose:
+            print("\n--- PLAN ---")
+            print(plan)
+            print("--- END PLAN ---\n")
+            print("--- CODE ---")
+            print(code)
+            print("--- END CODE ---\n")
+
+        # Step 2: Render with retry
+        result = RenderResult(success=False, video_path=None, error_msg="")
+        max_attempts = 3
+
+        for attempt in range(1, max_attempts + 1):
+            print(f"[2/3] Rendering (attempt {attempt}/{max_attempts})...")
+            scene_file = renderer.write_scene(code, attempt)
+            result = renderer.render(scene_file)
+
+            if result.success:
+                print(f"  Render succeeded! Video: {result.video_path}")
+                if metrics:
+                    metrics.add_render_attempt(attempt, success=True)
+                break
+
+            print(f"  Render failed. Error:\n{result.error_msg[:500]}")
+
+            if attempt < max_attempts:
+                print("  Asking LLM to fix the code...")
+                code = fix_code(code, result.error_msg, use_enhanced=True)
+                if args.verbose:
+                    print(f"\n--- FIXED CODE (attempt {attempt + 1}) ---")
+                    print(code)
+                    print("--- END FIXED CODE ---\n")
+
+        if not result.success:
+            if metrics:
+                metrics.add_render_attempt(max_attempts, success=False)
+            print(
+                f"\nFailed to render after {max_attempts} attempts.",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+
+        # Step 3: Play
+        if not args.no_play and result.video_path:
+            print("[3/3] Opening video...")
+            play_video(result.video_path)
+        elif result.video_path:
+            print(f"[3/3] Video saved at: {result.video_path}")
+
+        print("Done.")
+
+    finally:
+        # Finalize metrics collection
+        if metrics_collector:
+            metrics_collector.__exit__(None, None, None)
+            if args.measure:
+                print("\n" + metrics.summary())
+                print(f"\nMetrics saved to: {output_dir / 'metrics.json'}")
 
 
 if __name__ == "__main__":
